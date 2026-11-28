@@ -1,4 +1,4 @@
-const V="poslab-v20";
+const V="poslab-v22";
 const ASSETS=["./","./index.html","./manifest.webmanifest","./icon.svg","./icon-192.png","./icon-512.png","./icon-maskable-512.png","./apple-touch-icon.png"];
 self.addEventListener("install",e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()));});
 self.addEventListener("activate",e=>{e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(n=>n!==V&&n.startsWith("poslab-")).map(n=>caches.delete(n)))).then(()=>self.clients.claim()));});
